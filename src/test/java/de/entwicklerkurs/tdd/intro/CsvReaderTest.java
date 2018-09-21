@@ -8,7 +8,7 @@ import org.junit.Test;
 public class CsvReaderTest {
 
 	@Test
-	public void readFromString() throws Exception {
+	public void readColumnByNameAtRowIndex() throws Exception {
 		CsvReader csvReader = new CsvReader();
 		csvReader.read("col1\nval1");
 		String value = csvReader.getValue("col1", 0);
