@@ -26,6 +26,12 @@ public class CsvReaderTest {
 		csvReader.read("col1,col2\nval1,val2");
 		assertColumnValueAtRow(0, "col2", "val2");
 	}
+	
+	@Test
+	public void readColumnByNameAtRowIndexTwoColumns2() throws Exception {
+		csvReader.read("col1,col2\nval11,val12\nval21,val22");
+		assertColumnValueAtRow(1, "col1", "val21");
+	}
 
 	private void assertColumnValueAtRow(int rowIndex, String columnName, String expectedValue) {
 		String value = csvReader.getValue(columnName, rowIndex);
