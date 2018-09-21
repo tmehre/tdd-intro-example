@@ -13,25 +13,35 @@ public class CsvReader {
 	public void read(String csvString) {
 		String[] rows = csvString.split("\n");
 		for (int rowIdx = 0; rowIdx < rows.length; rowIdx++) {
-			if (rowIdx == 0) {
-				// process csv meta row
-				columnIdxInfo = new HashMap<Integer, String>();
-				String[] columnNames = rows[rowIdx].split(",");
-				for (int colIdx = 0; colIdx < columnNames.length; colIdx++) {
-					columnIdxInfo.put(colIdx, columnNames[colIdx]);
-				}
+			if (isMetaRow(rowIdx)) {
+				initColumnMetaInfo(rows, rowIdx);
 			} else {
-				// process csv data rows
-				String[] values = rows[rowIdx].split(",");
-				for (int colIdx = 0; colIdx < values.length; colIdx++) {
-					List<String> columnValues = csvData.get(columnIdxInfo.get(colIdx));
-					if (columnValues == null) {
-						columnValues = new ArrayList<String>();
-						csvData.put(columnIdxInfo.get(colIdx), columnValues);
-					}
-					columnValues.add(values[colIdx]);
-				}
+				mapValuesToColumns(rows, rowIdx);
 			}
+		}
+	}
+
+	private boolean isMetaRow(int rowIdx) {
+		return rowIdx == 0;
+	}
+
+	private void mapValuesToColumns(String[] rows, int rowIdx) {
+		String[] values = rows[rowIdx].split(",");
+		for (int colIdx = 0; colIdx < values.length; colIdx++) {
+			List<String> columnValues = csvData.get(columnIdxInfo.get(colIdx));
+			if (columnValues == null) {
+				columnValues = new ArrayList<String>();
+				csvData.put(columnIdxInfo.get(colIdx), columnValues);
+			}
+			columnValues.add(values[colIdx]);
+		}
+	}
+
+	private void initColumnMetaInfo(String[] rows, int rowIdx) {
+		columnIdxInfo = new HashMap<Integer, String>();
+		String[] columnNames = rows[rowIdx].split(",");
+		for (int colIdx = 0; colIdx < columnNames.length; colIdx++) {
+			columnIdxInfo.put(colIdx, columnNames[colIdx]);
 		}
 	}
 
