@@ -6,6 +6,9 @@ import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * @author Tobias <kontakt@entwicklerkurs.de>
+ */
 public class CsvReaderTest {
 
 	private SimpleCsvReader csvReader;

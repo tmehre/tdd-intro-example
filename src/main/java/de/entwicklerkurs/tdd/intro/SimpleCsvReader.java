@@ -5,8 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Tobias <kontakt@entwicklerkurs.de>
+ *
+ */
 public class SimpleCsvReader {
 
+	private static final String DEFAULT_CSV_SEPARATOR = ",";
 	private Map<String, List<String>> csvData = new HashMap<String, List<String>>();
 	private Map<Integer, String> columnIdxInfo;
 
@@ -29,7 +34,7 @@ public class SimpleCsvReader {
 	}
 
 	private void mapValuesToColumns(String[] rows, int rowIdx) {
-		String[] values = rows[rowIdx].split(",");
+		String[] values = rows[rowIdx].split(DEFAULT_CSV_SEPARATOR);
 		for (int colIdx = 0; colIdx < values.length; colIdx++) {
 			List<String> columnValues = csvData.get(columnIdxInfo.get(colIdx));
 			if (columnValues == null) {
@@ -42,7 +47,7 @@ public class SimpleCsvReader {
 
 	private void initColumnMetaInfo(String[] rows, int rowIdx) {
 		columnIdxInfo = new HashMap<Integer, String>();
-		String[] columnNames = rows[rowIdx].split(",");
+		String[] columnNames = rows[rowIdx].split(DEFAULT_CSV_SEPARATOR);
 		for (int colIdx = 0; colIdx < columnNames.length; colIdx++) {
 			columnIdxInfo.put(colIdx, columnNames[colIdx]);
 		}
