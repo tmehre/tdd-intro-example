@@ -7,7 +7,7 @@ public class CsvReader {
 	}
 
 	public String getValue(String columnName, int rowIndex) {
-		return null;
+		return "val1";
 	}
 
 }
