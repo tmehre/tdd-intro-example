@@ -11,6 +11,9 @@ public class SimpleCsvReader {
 	private Map<Integer, String> columnIdxInfo;
 
 	public void read(String csvString) {
+		if(csvString.isEmpty()) {
+			throw new IllegalArgumentException("CSV string cannot be null or empty.");
+		}
 		String[] rows = csvString.split("\n");
 		for (int rowIdx = 0; rowIdx < rows.length; rowIdx++) {
 			if (isMetaRow(rowIdx)) {
