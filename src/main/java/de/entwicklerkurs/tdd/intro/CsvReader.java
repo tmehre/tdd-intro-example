@@ -22,7 +22,6 @@ public class CsvReader {
 				}
 			} else {
 				// process csv data rows
-				List<String> rowData = new ArrayList<String>();
 				String[] values = rows[rowIdx].split(",");
 				for (int colIdx = 0; colIdx < values.length; colIdx++) {
 					List<String> columnValues = csvData.get(columnIdxInfo.get(colIdx));
