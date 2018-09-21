@@ -8,11 +8,11 @@ import org.junit.Test;
 
 public class CsvReaderTest {
 
-	private CsvReader csvReader;
+	private SimpleCsvReader csvReader;
 
 	@Before
 	public void initReader() {
-		csvReader = new CsvReader();
+		csvReader = new SimpleCsvReader();
 	}
 
 	@Test

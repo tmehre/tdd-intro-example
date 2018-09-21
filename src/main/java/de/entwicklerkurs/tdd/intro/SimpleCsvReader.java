@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CsvReader {
+public class SimpleCsvReader {
 
 	private Map<String, List<String>> csvData = new HashMap<String, List<String>>();
 	private Map<Integer, String> columnIdxInfo;
