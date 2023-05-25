@@ -9,7 +9,7 @@ import org.junit.Test;
 /**
  * @author Tobias <kontakt@entwicklerkurs.de>
  */
-public class CsvReaderTest {
+public class CsvReaderTest2 {
 
 	private SimpleCsvReader csvReader;
 
